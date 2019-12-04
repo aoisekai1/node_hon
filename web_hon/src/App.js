@@ -10,7 +10,9 @@ class App extends Component {
   //   }
   // }
   state = {
-    sentence: ''
+    nama: '',
+    jekel: '',
+    alamat: ''
   }
 
   getResponse = async () => {
@@ -25,17 +27,23 @@ class App extends Component {
   componentDidMount() {
     this.getResponse()
       .then(res => {
-        const someData = res;
-        this.setState({ sentence: someData.data });
+        this.setState(
+          { 
+            nama: res.data.nama,
+            jekel: res.data.jekel,
+            alamat: res.data.alamat
+          }
+        );
       })
   }
 
   render() {
     return (
       <div className="App">
-        <h1>
-          {this.state.sentence}
-        </h1>
+        <h1>Biodata</h1>
+        <p>Nama : {this.state.nama}</p>
+        <p>Jenis Kelamin : {this.state.jekel}</p>
+        <p>Alamat : {this.state.alamat}</p>
       </div>
     );
   }
