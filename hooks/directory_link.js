@@ -1,0 +1,9 @@
+exports.Chapters = 'pages/chapters/chapterPages';
+exports.ChapterAdd = 'pages/chapters/AddPages';
+exports.Posts = 'pages/posts/posts';
+exports.PostAdd = 'pages/posts/formInput';
+exports.Comments = 'pages/comments/posts';
+exports.CommentAdd = 'pages/comments/AddPages';
+exports.SocialNetwork = 'pages/setting/socialNetworkPages';
+exports.Genres = 'pages/genres/genres';
+exports.GenresAdd = 'pages/genres/addPages';

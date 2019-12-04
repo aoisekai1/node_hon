@@ -1,0 +1,66 @@
+{{#ifCond form '==' "add"}}
+  {{setVar "url" "/posts/create-new-post" ""}}
+{{else}}
+  {{setVar "url" "/posts/update/" data.code}}
+{{/ifCond}}
+<div class="container">
+<h3>{{lang.btn.btnInsert}} {{lang.titlePage.posts}}</h3>
+<div class="div-space"></div>
+<div class="col-sm-12">
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="row">
+          <a href="/posts" class="btn btn-primary btn-sm btn-block">
+            <i class="fas fa-list"></i>
+            {{lang.btn.btnList}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div-space"></div>
+<hr>
+<div class="row">
+  <div class="page-header"></div>
+  <div class="col-sm-12">
+    <form id="form-input-post" method="post" action="{{url}}">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>{{lang.form.code}}</label>
+          <input type="text" class="form-control" name="code" value="{{#ifCond data '==' ""}}{{autoCode "P"}}{{else}}{{data.code}}{{/ifCond}}" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>{{lang.form.title}}</label>
+          <input type="text" class="form-control" name="title" value="{{data.title}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>{{lang.form.desc}}</label>
+          <input type="text" class="form-control" name="description" value="{{data.description}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>{{lang.form.status}}</label>
+          {{{ddStatus data.status}}}
+          {{!-- <select class="form-control" name="status"> --}}
+            {{!-- <option value="unpublish">{{lang.form.unpublish}}</option>
+            <option value="publish">{{lang.form.publish}}</option> --}}
+          {{!-- </select> --}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fas fa-save"></i>
+          {{lang.btn.btnUpdate}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
