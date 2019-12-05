@@ -4,8 +4,10 @@ class NoMatch extends Component{
     render(){
         return(
             <center>
-                <h1>404</h1>
-                <label>Page Not Found</label>
+                <img src="404.png" width="600px" />
+                <p>
+                    <h2>Page Not Found</h2>
+                </p>
             </center>
         )
     }
