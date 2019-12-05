@@ -1,50 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
+/** Pages */
+import Home from "../src/pages/home/home";
+import Posts from "../src/pages/posts/posts";
+import Genres from "../src/pages/genres/genres";
+
+/** Error Pages */
+import NoMatch from "../src/pages/error";
 class App extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     sentence: ''
-  //   }
-  // }
-  state = {
-    nama: '',
-    jekel: '',
-    alamat: ''
-  }
-
-  getResponse = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  }
-
-  componentDidMount() {
-    this.getResponse()
-      .then(res => {
-        this.setState(
-          { 
-            nama: res.data.nama,
-            jekel: res.data.jekel,
-            alamat: res.data.alamat
-          }
-        );
-      })
-  }
-
   render() {
     return (
-      <div className="App">
-        <h1>Biodata</h1>
-        <p>Nama : {this.state.nama}</p>
-        <p>Jenis Kelamin : {this.state.jekel}</p>
-        <p>Alamat : {this.state.alamat}</p>
-      </div>
+      <Router>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
+              <li className="nav-item"><Link to="/posts" className="nav-link">Posts</Link></li>
+              <li className="nav-item"><Link to="/genres" className="nav-link">Genres</Link></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div className="container-fluid">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/posts" exact component={Posts} />
+            <Route path="/genres" exact component={Genres} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
